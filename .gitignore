@@ -1,0 +1,14 @@
+*.swp
+*.swo
+dist
+node_modules
+bower_components
+.idea
+*.DS_Store
+log/
+npm-debug.log
+config/secrets.json
+public/js/core/models.js
+public/js/core/helpers.js
+_session_store.json
+*.vtt

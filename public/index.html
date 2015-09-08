@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Popcorn time in the browser!</title>
+    <link href="cover.css" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.css">
+    <link href="//vjs.zencdn.net/4.12/video-js.css" rel="stylesheet">
+
+    <script src="/bower_components/jquery/dist/jquery.js"></script>
+    <script src="/bower_components/sammy/lib/sammy.js"></script>
+    <script src="/bower_components/handlebars/handlebars.js"></script>
+    <script src="//vjs.zencdn.net/4.12/video.js"></script>
+
+</head>
+<body>
+<nav class="navbar navbar-default navbar-static-top">
+    <div class="container">
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="active">
+                    <a href="#/">Филми</a>
+                </li>
+                <li>
+                    <a href="#">Сериали</a>
+                </li>
+            </ul>
+
+            <div class="navbar-form navbar-right" method="get" action="/" role="search">
+                <div class="input-group">
+                    <input id="tb-search" type="text" class="form-control" placeholder="Търсене">
+              <span class="input-group-btn">
+                <a href="#" id="btn-search" class="btn btn-default">
+                    <span class="glyphicon glyphicon-search"></span>
+                </a>
+              </span>
+                </div>
+            </div>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">
+                        Подреди по
+                        <span class="caret"></span>
+                    </a>
+
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Популярност</a></li>
+                        <li><a href="#">Тенденции</a></li>
+                        <li><a href="#">Последно добавени</a></li>
+                        <li><a href="#">Година</a></li>
+                        <li><a href="#">Оценка</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">
+                        Жанрове
+                        <span class="caret"></span>
+                    </a>
+
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Всички</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">Екшън</a></li>
+                        <li><a href="#">Приключенски</a></li>
+                        <li><a href="#">Анимационни</a></li>
+                        <li><a href="#">Биографични</a></li>
+                        <li><a href="#">Комедии</a></li>
+                        <li><a href="#">Криминале</a></li>
+                        <li><a href="#">Документални</a></li>
+                        <li><a href="#">Драма</a></li>
+                        <li><a href="#">Семейни</a></li>
+                        <li><a href="#">Фантастика</a></li>
+                        <li><a href="#">Филм ноар</a></li>
+                        <li><a href="#">Исторически</a></li>
+                        <li><a href="#">Ужаси</a></li>
+                        <li><a href="#">Музикални</a></li>
+                        <li><a href="#">Мюзикъл</a></li>
+                        <li><a href="#">Мистерии</a></li>
+                        <li><a href="#">Романтични</a></li>
+                        <li><a href="#">Научна фантастика</a></li>
+                        <li><a href="#">Късометражни</a></li>
+                        <li><a href="#">Спортни</a></li>
+                        <li><a href="#">Трилъри</a></li>
+                        <li><a href="#">Военни</a></li>
+                        <li><a href="#">Уестърн</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div id="content" class="container"></div>
+
+<div id="loader"></div>
+
+
+<script src="src/templates.js"></script>
+<script src="src/yts-parser.js"></script>
+<script src="src/sammy-routes.js"></script>
+
+<script>
+    $('#btn-search').on('click', function(){
+        var query = encodeURIComponent($('#tb-search').val());
+        window.location = '#/search/' + query;
+        console.log(query);
+    })
+</script>
+</body>
+</html>
