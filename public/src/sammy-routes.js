@@ -65,8 +65,9 @@ $(function () {
 });
 
 function createVideo(url) {
+    var hostName = window.location.hostname;
     var $video = $('<video />').attr('name', 'media').attr('controls', '').attr('autoplay', '').width('100%').height('100%');
-    var $source = $('<source />').attr('src', url).attr('type', 'video/mp4').appendTo($video);
+    var $source = $('<source />').attr('src', 'http://' + hostName + url).attr('type', 'video/mp4').appendTo($video);
     var $track = $('<track />').attr('kind', 'subtitles').attr('src', '/subtitles/bulgarian.vtt').attr('srclang', 'bg').attr('label', 'Bulgarian').attr('default', '').appendTo($video);
     $('#content').html($video);
 }
