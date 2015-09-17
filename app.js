@@ -1,24 +1,28 @@
 var express = require('express');
-var peerflix = require('peerflix');
+var WebTorrent = require('webtorrent')
+
 var app = express();
+var client = new WebTorrent()
 
 app.use(express.static('public'));
 
 var server = app.listen(3000, function () {
     var port = server.address().port;
 
-    console.log('Server is listening at port: %s', port);
+    console.log('Server is listening on port: %s', port);
 });
 
 
 app.get('/watch/:name/:hash', function (req, res) {
-    var magnetLink = createMagnetLink(req.params.name, req.params.hash);
-    var engine = peerflix(magnetLink);
-    console.log('Streaming: ' + req.params.name);
+    var magnetUri = createMagnetLink(req.params.name, req.params.hash);
+    client.add(magnetUri, function (torrent) {
+        // Got torrent metadata!
+        console.log('Client is downloading:', torrent.infoHash)
+        var server = torrent.createServer();
+        server.listen();
+        console.log(server.address());
 
-    engine.server.on('listening', function () {
-        var myLink = 'http://localhost:' + engine.server.address().port + '/';
-        res.send(myLink);
+        res.send(':' + server.address().port + '/0');
     })
 });
 
@@ -32,3 +36,7 @@ function createMagnetLink(name, hash) {
 
     return magnetLink;
 }
+
+
+var magnetUri = '...'
+
