@@ -42,7 +42,8 @@ var sammyApp = Sammy('#content', function () {
             })
         })
     });
-    this.get('#/:query', function () {
+
+    this.get('#/genre/:query', function () {
         var movies;
         ytsParser.getGenre(this.params.query).then(function (res) {
             movies = res;
@@ -52,6 +53,17 @@ var sammyApp = Sammy('#content', function () {
 
 
         })
+    });
+
+    this.get('#/sortby/:query', function () {
+        var movies;
+        ytsParser.sortBy(this.params.query).then(function (res) {
+            movies = res;
+            return templates.get('movies');
+        }).then(function (template) {
+            $content.html(template(movies));
+        });
+
     })
 
 });

@@ -42,14 +42,27 @@ var ytsParser = (function () {
                 var movies = res.data.movies;
                 resolve(movies);
             });
-        })
+        });
         return promise;
     }
+
+    function sortBy(query) {
+        var promise = new Promise(function (resolve, reject) {
+            var url = 'https://yts.to/api/v2/list_movies.json?sort_by=' + query;
+            $.getJSON(url, function (res) {
+                var movies = res.data.movies;
+                resolve(movies);
+            })
+        });
+        return promise;
+    }
+
 
     return {
         getMovies: getMovies,
         getMovieStream: getMovieStream,
         search: search,
-        getGenre:filterByGenre
-    }
+        getGenre: filterByGenre,
+        sortBy: sortBy
+    };
 }());
