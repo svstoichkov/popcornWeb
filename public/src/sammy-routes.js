@@ -24,22 +24,33 @@ var sammyApp = Sammy('#content', function () {
             .then(function (streamURL) {
                 createVideo(streamURL);
             })
-    })
+    });
 
     this.get('#/search/:query', function () {
         $content.html('');
         var movies;
         ytsParser.search(this.params.query).then(function (res) {
-                movies = res;
-                return templates.get('movies');
-            }).then(function (template) {
-                $content.html(template(movies));
-            }).then(function () {
+            movies = res;
+            return templates.get('movies');
+        }).then(function (template) {
+            $content.html(template(movies));
+        }).then(function () {
             $('.dropdown-toggle').on('click', function () {
                 $('.open').removeClass('open');
                 $(this).parent().addClass('open');
                 event.stopPropagation();
             })
+        })
+    });
+    this.get('#/:query', function () {
+        var movies;
+        ytsParser.getGenre(this.params.query).then(function (res) {
+            movies = res;
+            return templates.get('movies');
+        }).then(function (template) {
+            $content.html(template(movies));
+
+
         })
     })
 

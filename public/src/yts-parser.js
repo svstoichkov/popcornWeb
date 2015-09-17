@@ -35,9 +35,21 @@ var ytsParser = (function () {
         return promise;
     }
 
+    function filterByGenre(genre) {
+        var promise = new Promise(function (resolve, reject) {
+            var url = 'https://yts.to/api/v2/list_movies.json?genre=' + genre;
+            $.getJSON(url, function (res) {
+                var movies = res.data.movies;
+                resolve(movies);
+            });
+        })
+        return promise;
+    }
+
     return {
         getMovies: getMovies,
         getMovieStream: getMovieStream,
-        search: search
+        search: search,
+        getGenre:filterByGenre
     }
 }());
