@@ -87,3 +87,10 @@ function createVideo(url) {
 function createLoader() {
     var $loader = $('<div />').addClass('site-wrapper');
 }
+
+$('.genre').on('click', function(){
+    $this = $(this);
+
+    var genre = $this.html();
+    window.location += 'genre=' + genre;
+});
