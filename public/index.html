@@ -3,60 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <title>Popcorn time in the browser!</title>
-    <link href="cover.css" rel="stylesheet">
 
+    <link href="cover.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.css">
-    <link href="//vjs.zencdn.net/4.12/video-js.css" rel="stylesheet">
 
     <script src="/bower_components/jquery/dist/jquery.js"></script>
+    <script src="/bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <script src="/bower_components/sammy/lib/sammy.js"></script>
     <script src="/bower_components/handlebars/handlebars.js"></script>
-    <script src="//vjs.zencdn.net/4.12/video.js"></script>
 </head>
 <body>
 <nav class="navbar navbar-default navbar-static-top">
     <div class="container">
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li class="active">
-                    <a href="#/">Films</a>
-                </li>
-                <li>
-                    <a href="#">TV Series</a>
-                </li>
-            </ul>
-
-            <div class="navbar-form navbar-right" method="get" action="/" role="search">
-                <div class="input-group">
-                    <input id="tb-search" type="text" class="form-control" placeholder="Search">
-              <span class="input-group-btn">
-                <a href="#" id="btn-search" class="btn btn-default">
-                    <span class="glyphicon glyphicon-search"></span>
-                </a>
-              </span>
-                </div>
-            </div>
-            <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
-                    <a  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                    <a href="#/" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                        aria-expanded="false">
-                        Sort By
-                        <span class="caret"></span>
-                    </a>
-
-                    <ul class="dropdown-menu">
-                        <li><a href="#/sortby/download_count">Popularity</a></li>
-                        <li><a href="#/sortby/seeds">Trends</a></li>
-                        <li><a href="#/sortby/date_added">Date added</a></li>
-                        <li><a href="#/sortby/year">Year</a></li>
-                        <li><a href="#/sortby/rating">Rating</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-
-                    <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                       aria-expanded="false">
-                        Genre
+                        Movies
                         <span class="caret"></span>
                     </a>
 
@@ -86,6 +50,37 @@
                         <li><a class="genre">Thriller</a></li>
                         <li><a class="genre">War</a></li>
                         <li><a class="genre">Western</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">TV Series</a>
+                </li>
+            </ul>
+
+            <div class="navbar-form navbar-right" method="get" action="/" role="search">
+                <div class="input-group">
+                    <input id="tb-search" type="text" class="form-control" placeholder="Search">
+              <span class="input-group-btn">
+                <a href="#" id="btn-search" class="btn btn-default">
+                    <span class="glyphicon glyphicon-search"></span>
+                </a>
+              </span>
+                </div>
+            </div>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">
+                        Sort By
+                        <span class="caret"></span>
+                    </a>
+
+                    <ul class="dropdown-menu">
+                        <li><a class="sortBy">Popularity</a></li>
+                        <li><a class="sortBy">Trends</a></li>
+                        <li><a class="sortBy">Date added</a></li>
+                        <li><a class="sortBy">Year</a></li>
+                        <li><a class="sortBy">Rating</a></li>
                     </ul>
                 </li>
             </ul>
